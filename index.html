@@ -295,7 +295,8 @@
   function size(){W=innerWidth;H=innerHeight;cv.width=W*DPR;cv.height=H*DPR;cv.style.width=W+'px';cv.style.height=H+'px';}
   addEventListener('resize',size);size();
   addEventListener('mousemove',e=>{mX=(e.clientX/innerWidth-0.5)*2;mY=(e.clientY/innerHeight-0.5)*2;});
-  const stars=[];for(let i=0;i<200;i++){const u=Math.random()*TAU,v=Math.acos(2*Math.random()-1);stars.push([Math.sin(v)*Math.cos(u),Math.cos(v),Math.sin(v)*Math.sin(u),Math.random()*TAU,0.4+Math.random()*1.4]);}
+  const stars=[];for(let i=0;i<300;i++){const u=Math.random()*TAU,v=Math.acos(2*Math.random()-1);stars.push([Math.sin(v)*Math.cos(u),Math.cos(v),Math.sin(v)*Math.sin(u),Math.random()*TAU,0.5+Math.random()*1.9]);}
+  const RINGS=[{rr:1.34,tx:0.95,tz:0.22,sp:0.5,n:110},{rr:1.7,tx:-0.55,tz:1.0,sp:-0.34,n:130}];
   function frame(){
     ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,W,H);
     const cx=W*0.5,cy=H*0.46,R=Math.min(W,H)*0.30;
@@ -305,7 +306,7 @@
     const sax=Math.sin(AX),cax=Math.cos(AX),say=Math.sin(AY),cay=Math.cos(AY),saz=Math.sin(AZ),caz=Math.cos(AZ);
     const rot=v=>{let x=v[0],y=v[1],z=v[2];let y1=y*cax-z*sax,z1=y*sax+z*cax;y=y1;z=z1;let x1=x*cay+z*say,z2=-x*say+z*cay;x=x1;z=z2;return[x*caz-y*saz,x*saz+y*caz,z2];};
     ctx.globalCompositeOperation='lighter';
-    for(const s of stars){const p=rot(s);const dep=(p[2]+1)/2;ctx.globalAlpha=(0.06+0.18*dep)*(0.6+0.4*Math.sin(t*6+s[3]));ctx.fillStyle=rgba([233,236,242],1);ctx.beginPath();ctx.arc(cx+p[0]*R*2.1,cy+p[1]*R*2.1,s[4]*dep,0,TAU);ctx.fill();}
+    for(const s of stars){const p=rot(s);const dep=(p[2]+1)/2;ctx.globalAlpha=(0.12+0.32*dep)*(0.55+0.45*Math.sin(t*6+s[3]));ctx.fillStyle=rgba([233,236,242],1);ctx.beginPath();ctx.arc(cx+p[0]*R*2.1,cy+p[1]*R*2.1,s[4]*(0.55+dep),0,TAU);ctx.fill();}
     const pv=ICO_V.map(v=>{const p=rot(v);return{x:cx+p[0]*R,y:cy+p[1]*R,z:p[2]};});
     const fz=ICO_F.map(f=>{const cz=(pv[f[0]].z+pv[f[1]].z+pv[f[2]].z)/3;return[f,cz];}).sort((a,b)=>a[1]-b[1]);
     for(const[f,cz]of fz){const dep=cz*0.5+0.5;ctx.globalAlpha=0.04+0.05*dep;ctx.fillStyle=rgba(accCur,1);ctx.beginPath();ctx.moveTo(pv[f[0]].x,pv[f[0]].y);ctx.lineTo(pv[f[1]].x,pv[f[1]].y);ctx.lineTo(pv[f[2]].x,pv[f[2]].y);ctx.closePath();ctx.fill();}
@@ -314,6 +315,16 @@
     ctx.shadowBlur=0;
     for(const p of pv){const dep=p.z*0.5+0.5;ctx.globalAlpha=0.3+0.6*dep;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(p.x,p.y,0.8+1.8*dep,0,TAU);ctx.fill();}
     ctx.globalAlpha=0.6;ctx.fillStyle=rgba(accCur,1);ctx.shadowColor=rgba(accCur,1);ctx.shadowBlur=26;ctx.beginPath();ctx.arc(cx,cy,3,0,TAU);ctx.fill();ctx.shadowBlur=0;
+    for(const ring of RINGS){
+      const place=a=>{let x=Math.cos(a)*R*ring.rr,y=0,z=Math.sin(a)*R*ring.rr;
+        let y1=y*Math.cos(ring.tx)-z*Math.sin(ring.tx),z1=y*Math.sin(ring.tx)+z*Math.cos(ring.tx);y=y1;z=z1;
+        let x1=x*Math.cos(ring.tz)-y*Math.sin(ring.tz),y2=x*Math.sin(ring.tz)+y*Math.cos(ring.tz);x=x1;y=y2;
+        const p=rot([x,y,z]);return{sx:cx+p[0],sy:cy+p[1],dep:(p[2]+1)/2};};
+      let prev=null;
+      for(let i=0;i<=ring.n;i++){const q=place(i/ring.n*TAU+t*ring.sp);
+        if(prev){ctx.strokeStyle=rgba(accCur,0.05+0.26*q.dep);ctx.lineWidth=1.1;ctx.beginPath();ctx.moveTo(prev.sx,prev.sy);ctx.lineTo(q.sx,q.sy);ctx.stroke();}prev=q;}
+      for(let k=0;k<2;k++){const q=place(t*ring.sp+k*Math.PI);ctx.shadowColor=rgba(accCur,1);ctx.shadowBlur=14;ctx.globalAlpha=0.45+0.5*q.dep;ctx.fillStyle=rgba(accCur,1);ctx.beginPath();ctx.arc(q.sx,q.sy,2+1.8*q.dep,0,TAU);ctx.fill();ctx.shadowBlur=0;}
+    }
     ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
     requestAnimationFrame(frame);
   }
