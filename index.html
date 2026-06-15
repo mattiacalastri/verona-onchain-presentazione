@@ -1,9 +1,7 @@
 <!doctype html><html lang="it"><head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>Il Polpo e l'Economia Tokenizzata · Verona OnChain #01 · 17 Giu 2026</title>
-<meta property="og:title" content="Il Polpo e l'Economia Tokenizzata · Verona OnChain #01"/>
-<meta property="og:description" content="Verona OnChain #01 — l'AI è il primo cliente dell'economia tokenizzata. Doppio Malto Verona, 17 Giugno 2026."/>
+<title>Il Polpo e l'economia tokenizzata · Verona OnChain #01 · 17 Giu 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -11,16 +9,13 @@
   :root{
     --bg:#08090d;--panel:#0e1016;--ink:#e9ecf2;--dim:#7a8190;--line:#1c2029;--hair:#262b36;
     --viola:#9b5de5;--rosa:#ff2e63;--teal:#00d4aa;--arancio:#ff8c00;--oro:#ffd400;--sky:#5ec5ff;
-    --c:#9b5de5; /* accento per-slide, sovrascritto da ogni section */
-    --mono:'IBM Plex Mono',ui-monospace,monospace;--disp:'Syne',sans-serif;
+    --c:#9b5de5;--mono:'IBM Plex Mono',ui-monospace,monospace;--disp:'Syne',sans-serif;
   }
-  html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--mono);-webkit-font-smoothing:antialiased}
-  /* ---- sfondo: griglia animata ---- */
+  html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--mono)}
   body::before{content:'';position:fixed;inset:-44px;z-index:0;pointer-events:none;
     background-image:linear-gradient(rgba(233,236,242,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(233,236,242,.025) 1px,transparent 1px);
     background-size:46px 46px;animation:drift 32s linear infinite}
   @keyframes drift{to{transform:translate(46px,46px)}}
-  /* ---- grana frattale ---- */
   body::after{content:'';position:fixed;inset:0;z-index:6;pointer-events:none;opacity:.05;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E")}
   .nebula{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(8px)}
@@ -28,324 +23,248 @@
   .n2{width:58vw;height:58vw;right:-18vw;bottom:-24vw;background:radial-gradient(circle,rgba(0,212,170,.12),transparent 62%)}
   .n3{width:44vw;height:44vw;right:8vw;top:-14vw;background:radial-gradient(circle,rgba(255,46,99,.10),transparent 60%)}
   #ico{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.85}
-  .vignette{position:fixed;inset:0;z-index:6;pointer-events:none;
-    background:radial-gradient(ellipse 120% 95% at 52% 46%,transparent 55%,rgba(4,5,8,.82) 100%)}
-  /* ---- deck ---- */
+  .vignette{position:fixed;inset:0;z-index:6;pointer-events:none;background:radial-gradient(ellipse 120% 95% at 52% 46%,transparent 55%,rgba(4,5,8,.82) 100%)}
   .deck{position:relative;z-index:10;width:100vw;height:100vh}
-  .slide{position:absolute;inset:0;padding:clamp(20px,4vw,58px) clamp(20px,5.5vw,92px);display:flex;flex-direction:column;
+  .slide{position:absolute;inset:0;padding:clamp(22px,4vw,64px) clamp(22px,6vw,100px);display:flex;flex-direction:column;justify-content:center;
     opacity:0;visibility:hidden;transform:translateY(18px) scale(.985);
-    transition:opacity .6s cubic-bezier(.2,.8,.2,1),transform .6s cubic-bezier(.2,.8,.2,1),visibility .6s;
-    overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+    transition:opacity .6s cubic-bezier(.2,.8,.2,1),transform .6s cubic-bezier(.2,.8,.2,1),visibility .6s;overflow:hidden}
   .slide.active{opacity:1;visibility:visible;transform:none}
-  .slide::-webkit-scrollbar{width:6px}.slide::-webkit-scrollbar-thumb{background:var(--c);border-radius:3px}
-  /* topbar */
-  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-  .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.34em;color:var(--c);font-weight:600;text-transform:uppercase;
-    border:1px solid color-mix(in srgb,var(--c) 45%,transparent);padding:5px 11px;border-radius:2px;background:color-mix(in srgb,var(--c) 10%,transparent)}
+  .topbar{position:absolute;top:clamp(16px,3vw,34px);left:clamp(22px,6vw,100px);right:clamp(22px,6vw,100px);display:flex;justify-content:space-between;align-items:center}
+  .tag{font-family:var(--mono);font-size:10px;letter-spacing:.32em;color:var(--c);font-weight:600;text-transform:uppercase;border:1px solid color-mix(in srgb,var(--c) 45%,transparent);padding:5px 11px;border-radius:2px;background:color-mix(in srgb,var(--c) 10%,transparent)}
   .counter{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.2em}
   .counter .sn{font-family:var(--disp);color:var(--c);font-weight:800;font-size:15px}
-  /* heads */
-  .shead{margin:26px 0 6px}
-  .kick,.snum{font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--c);font-weight:600}
-  .htit{font-family:var(--disp);font-weight:800;font-size:clamp(40px,7vw,92px);line-height:.94;letter-spacing:-.015em;margin:10px 0 8px}
-  .stit{font-family:var(--disp);font-weight:800;font-size:clamp(26px,3.8vw,52px);line-height:1.0;letter-spacing:-.01em;margin:6px 0}
-  .gw{color:var(--c);text-shadow:0 0 28px color-mix(in srgb,var(--c) 55%,transparent)}
-  .shimmer{background:linear-gradient(92deg,var(--arancio),var(--rosa) 32%,var(--viola) 62%,var(--teal));
-    background-size:240% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 9s linear infinite}
+  .kick{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--c);font-weight:600;display:block;margin-bottom:12px}
+  .htit{font-family:var(--disp);font-weight:800;font-size:clamp(46px,8vw,104px);line-height:.92;letter-spacing:-.02em}
+  .stit{font-family:var(--disp);font-weight:800;font-size:clamp(32px,5vw,68px);line-height:1.0;letter-spacing:-.015em;margin-bottom:6px}
+  .gw{color:var(--c);text-shadow:0 0 30px color-mix(in srgb,var(--c) 60%,transparent)}
+  .shimmer{background:linear-gradient(92deg,var(--arancio),var(--rosa) 32%,var(--viola) 62%,var(--teal));background-size:240% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 9s linear infinite}
   @keyframes shimmer{to{background-position:240% center}}
-  .gbar{height:2px;width:80px;background:var(--c);margin:12px 0 18px;box-shadow:0 0 16px var(--c)}
-  .sub,.hsub{font-family:var(--mono);font-size:clamp(12px,1.25vw,15px);line-height:1.7;color:var(--ink);max-width:165mm;font-weight:400}
-  .hsub{border-left:2px solid var(--c);padding-left:16px}
-  .sub b,.hsub b,.blk b,.st b{color:#fff;font-weight:600}
-  .meta{display:flex;gap:28px;margin-top:18px;flex-wrap:wrap}
-  .mi{font-family:var(--mono);font-size:11px;color:var(--dim);border-top:1px solid var(--c);padding-top:9px;min-width:210px;line-height:1.6}
-  .mi b{display:block;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--c);margin-bottom:5px;font-weight:600}
-  /* glass card */
-  .blk{position:relative;background:rgba(233,236,242,.025);border:1px solid var(--hair);border-radius:4px;
-    padding:15px 18px 15px 20px;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
-  .blk::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--c)}
-  .blk:hover{transform:translateY(-3px);border-color:var(--c);box-shadow:0 18px 50px -28px var(--c),0 0 0 1px color-mix(in srgb,var(--c) 40%,transparent)}
-  .blk h3{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--c);margin-bottom:7px;font-weight:600}
-  .blk p{font-size:clamp(11px,1vw,13.5px);line-height:1.6;color:var(--ink)}
-  .blk code{font-family:var(--mono);background:color-mix(in srgb,var(--c) 22%,transparent);color:#fff;padding:1px 6px;border-radius:2px;font-size:11px}
-  /* layouts */
-  .cols{display:grid;grid-template-columns:1.4fr 1fr;gap:36px;flex:1;align-items:center}
-  .colL{display:flex;flex-direction:column;gap:16px;justify-content:center}
-  .colR{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
-  .ps{width:78%;max-width:380px;height:auto;filter:drop-shadow(0 0 40px color-mix(in srgb,var(--c) 60%,transparent))}
-  .ps.big{max-width:460px;width:92%}
-  .qp{position:relative;background:rgba(8,9,13,.6);border:1px solid color-mix(in srgb,var(--c) 40%,transparent);border-radius:4px;
-    padding:16px 18px;backdrop-filter:blur(6px)}
-  .qp p{font-family:var(--disp);font-size:clamp(13px,1.2vw,17px);line-height:1.4;color:#fff;font-weight:600}
-  .qp .src{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--c);margin-top:10px;text-transform:uppercase}
-  .st{font-family:var(--disp);font-weight:700;font-size:clamp(15px,1.7vw,21px);line-height:1.4;color:var(--ink);
-    padding:16px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
-  .st .h{color:var(--c)} .st .h2{color:var(--sky)}
-  /* stats */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
-  .stat{position:relative;background:rgba(233,236,242,.025);border:1px solid var(--hair);border-radius:4px;padding:16px 15px;overflow:hidden}
-  .stat::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--sc,var(--c))}
-  .stat .big{font-family:var(--disp);font-weight:800;font-size:clamp(24px,2.6vw,36px);color:var(--sc,var(--c));line-height:1;text-shadow:0 0 18px color-mix(in srgb,var(--sc,var(--c)) 50%,transparent)}
-  .stat .lab{font-family:var(--mono);font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-top:5px}
-  .stat .desc{font-size:10.5px;line-height:1.45;color:var(--ink);margin-top:8px}
-  /* layer stack */
-  .layers{display:flex;flex-direction:column;gap:12px;justify-content:center}
-  .layer{position:relative;background:rgba(233,236,242,.025);border:1px solid var(--hair);border-radius:4px;padding:14px 18px;border-left:3px solid var(--lc)}
-  .layer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--lc);margin-bottom:5px;font-weight:600}
-  .layer p{font-size:12px;line-height:1.55;color:var(--ink)}
-  .layer p b{color:#fff}
-  /* 5 cards sciame */
-  .five{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;flex:1;align-items:stretch}
-  .mc{position:relative;background:rgba(233,236,242,.025);border:1px solid var(--hair);border-radius:4px;padding:16px 13px;display:flex;flex-direction:column;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s}
-  .mc::before{content:'';position:absolute;left:0;top:0;right:0;height:2px;background:var(--mcc)}
-  .mc:hover{transform:translateY(-8px);border-color:var(--mcc);box-shadow:0 20px 50px -26px var(--mcc)}
-  .mc .t{font-family:var(--disp);font-weight:800;font-size:clamp(26px,3vw,38px);color:var(--mcc);line-height:1;text-shadow:0 0 18px color-mix(in srgb,var(--mcc) 50%,transparent)}
-  .mc h4{font-family:var(--mono);font-size:clamp(10px,1vw,12px);letter-spacing:.06em;color:#fff;margin:10px 0 7px;font-weight:600;text-transform:uppercase}
-  .mc p{font-size:10.5px;line-height:1.5;color:var(--ink);flex:1}
-  .mc .bd{margin-top:9px;font-family:var(--mono);font-size:8px;letter-spacing:.14em;color:#08090d;background:var(--mcc);padding:3px 7px;align-self:flex-start;border-radius:2px;font-weight:600}
-  /* case terminal */
-  .cs{display:grid;grid-template-columns:1fr 1.15fr;gap:30px;flex:1}
-  .csL{display:flex;flex-direction:column;gap:14px;justify-content:center}
-  .csnum{font-family:var(--disp);font-weight:800;font-size:clamp(40px,4.6vw,66px);color:var(--c);line-height:1;text-shadow:0 0 20px color-mix(in srgb,var(--c) 50%,transparent)}
-  .csnum small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--dim);margin-top:6px}
-  .term{background:rgba(8,9,13,.72);border:1px solid color-mix(in srgb,var(--c) 40%,transparent);border-radius:5px;padding:18px;font-family:var(--mono);font-size:11.5px;line-height:1.75;color:var(--ink);position:relative;overflow:hidden}
-  .term::before{content:'● ● ●';position:absolute;top:8px;left:14px;color:var(--c);font-size:9px;letter-spacing:.3em;opacity:.7}
-  .term .body{margin-top:26px}
-  .term .pr{color:var(--c)} .term .ar{color:var(--rosa)} .term .nu{color:var(--oro);font-weight:600} .term .ok{color:var(--teal);font-weight:600}
-  /* roadmap */
-  .rmap{display:flex;flex-direction:column;flex:1;justify-content:center;gap:22px}
-  .timeline{position:relative;display:flex;justify-content:space-between;margin:24px 0 8px;padding:0 14px}
-  .timeline::before{content:'';position:absolute;top:13px;left:24px;right:24px;height:2px;background:linear-gradient(90deg,var(--viola),var(--rosa),var(--teal),var(--oro),var(--sky))}
+  .gbar{height:3px;width:88px;background:var(--c);margin:16px 0 22px;box-shadow:0 0 18px var(--c)}
+  .lead{font-family:var(--mono);font-size:clamp(14px,1.6vw,20px);line-height:1.6;color:var(--ink);max-width:1000px}
+  .lead b{color:#fff}
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:center;width:100%}
+  .ps{width:90%;max-width:440px;filter:drop-shadow(0 0 50px color-mix(in srgb,var(--c) 60%,transparent))}
+  .meta{display:flex;gap:30px;margin-top:24px;flex-wrap:wrap}
+  .mi{font-family:var(--mono);font-size:12px;color:var(--dim);border-top:2px solid var(--c);padding-top:10px;min-width:230px;line-height:1.7}
+  .mi b{display:block;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--c);margin-bottom:6px;font-weight:600}
+  /* tiles (infografica numeri/parole) */
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;width:100%}
+  .tile{background:rgba(233,236,242,.03);border:1px solid var(--hair);border-radius:8px;padding:30px 22px;text-align:center;position:relative;overflow:hidden}
+  .tile::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:var(--tc,var(--c))}
+  .tile .n{font-family:var(--disp);font-weight:800;font-size:clamp(34px,5vw,64px);color:var(--tc,var(--c));line-height:1;text-shadow:0 0 26px color-mix(in srgb,var(--tc,var(--c)) 55%,transparent)}
+  .tile .l{font-family:var(--mono);font-size:clamp(12px,1.2vw,15px);color:var(--ink);margin-top:12px;line-height:1.45}
+  .punch{font-family:var(--disp);font-weight:800;font-size:clamp(22px,3vw,40px);text-align:center;color:#fff;margin-top:26px;line-height:1.15}
+  .punch b{color:var(--c);text-shadow:0 0 28px color-mix(in srgb,var(--c) 55%,transparent)}
+  /* ponte */
+  .bridge{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;width:100%;margin-top:10px}
+  .bx{background:rgba(233,236,242,.03);border:1.5px solid var(--bxc);border-radius:10px;padding:30px 24px;text-align:center;box-shadow:0 0 60px -28px var(--bxc)}
+  .bx .role{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--bxc);font-weight:600}
+  .bx .big{font-family:var(--disp);font-weight:800;font-size:clamp(22px,2.6vw,38px);color:#fff;margin:10px 0 6px;line-height:1.05}
+  .bx .who{font-family:var(--mono);font-size:12px;color:var(--dim)}
+  .bmid{font-family:var(--disp);font-weight:800;font-size:clamp(34px,4vw,56px);color:var(--ink);text-align:center}
+  /* flow stack */
+  .flow{display:flex;flex-direction:column;gap:8px;width:100%;max-width:880px}
+  .frow{display:flex;align-items:center;gap:22px;background:rgba(233,236,242,.03);border:1px solid var(--hair);border-left:4px solid var(--fc);border-radius:8px;padding:20px 26px}
+  .frow .ic{font-family:var(--disp);font-weight:800;font-size:clamp(28px,3vw,40px);color:var(--fc);min-width:52px}
+  .frow .tx{font-family:var(--disp);font-weight:700;font-size:clamp(16px,1.9vw,26px);color:#fff}
+  .frow .tx b{color:var(--fc)}
+  .farr{text-align:center;color:var(--dim);font-size:20px;line-height:1}
+  /* cinque tessere */
+  .five{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;width:100%}
+  .mc{background:rgba(233,236,242,.03);border:1px solid var(--hair);border-radius:8px;padding:24px 16px;text-align:center;position:relative;overflow:hidden}
+  .mc::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:var(--mcc)}
+  .mc .t{font-family:var(--disp);font-weight:800;font-size:clamp(30px,3.4vw,48px);color:var(--mcc);line-height:1;text-shadow:0 0 20px color-mix(in srgb,var(--mcc) 50%,transparent)}
+  .mc h4{font-family:var(--disp);font-weight:700;font-size:clamp(13px,1.3vw,18px);color:#fff;margin:14px 0 10px;line-height:1.15}
+  .mc .bd{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;color:#08090d;background:var(--mcc);padding:3px 8px;border-radius:2px;font-weight:600;text-transform:uppercase}
+  /* caso 1=15 */
+  .case{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;width:100%}
+  .bignum{font-family:var(--disp);font-weight:800;font-size:clamp(90px,14vw,200px);line-height:.85;color:var(--c);text-shadow:0 0 60px color-mix(in srgb,var(--c) 55%,transparent)}
+  .bignum small{font-family:var(--mono);font-size:clamp(12px,1.4vw,17px);letter-spacing:.06em;color:var(--dim);display:block;margin-top:16px;text-shadow:none;line-height:1.5}
+  .clabels{display:flex;flex-direction:column;gap:12px}
+  .clab{display:flex;gap:14px;align-items:baseline;font-family:var(--mono);font-size:clamp(13px,1.5vw,18px);color:var(--ink)}
+  .clab b{font-family:var(--disp);color:var(--c);font-size:.85em;min-width:96px;text-transform:uppercase;letter-spacing:.08em}
+  /* timeline */
+  .timeline{position:relative;display:flex;justify-content:space-between;margin:8px 0 14px;padding:0 14px;width:100%}
+  .timeline::before{content:'';position:absolute;top:12px;left:24px;right:24px;height:2px;background:linear-gradient(90deg,var(--viola),var(--rosa),var(--teal),var(--oro),var(--sky))}
   .ms{position:relative;text-align:center;flex:1}
-  .ms .node{width:26px;height:26px;border-radius:50%;background:var(--bg);border:2px solid var(--mc);margin:0 auto 10px}
-  .ms .date{font-family:var(--mono);font-size:9.5px;color:var(--dim);letter-spacing:.1em;margin-bottom:5px}
-  .ms .nm{font-family:var(--disp);font-size:12px;font-weight:700;color:var(--ink);line-height:1.15;margin-bottom:5px}
-  .ms .ds{font-size:9.5px;color:var(--dim);line-height:1.4;max-width:130px;margin:0 auto}
-  .moves{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:940px;margin:0 auto;width:100%}
-  .cta{background:linear-gradient(135deg,color-mix(in srgb,var(--viola) 18%,transparent),color-mix(in srgb,var(--teal) 18%,transparent));
-    border:1px solid color-mix(in srgb,var(--teal) 55%,transparent);border-radius:6px;padding:20px;text-align:center;max-width:820px;margin:0 auto;box-shadow:0 0 50px -20px var(--teal)}
-  .cta h3{font-family:var(--disp);font-weight:800;font-size:clamp(16px,1.9vw,24px);color:var(--oro);margin-bottom:8px}
-  .cta p{font-size:12px;line-height:1.55;color:var(--ink);margin-bottom:14px}
-  .ctarow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;text-decoration:none;
-    padding:13px 22px;border-radius:3px;border:1px solid transparent;transition:transform .18s,box-shadow .18s;display:inline-block}
+  .ms .node{width:24px;height:24px;border-radius:50%;background:var(--bg);border:2px solid var(--mc);margin:0 auto 10px}
+  .ms .date{font-family:var(--mono);font-size:10px;color:var(--dim);margin-bottom:4px}
+  .ms .nm{font-family:var(--disp);font-size:clamp(12px,1.2vw,15px);font-weight:700;color:var(--ink);line-height:1.15}
+  /* cta */
+  .cta{background:linear-gradient(135deg,color-mix(in srgb,var(--viola) 18%,transparent),color-mix(in srgb,var(--teal) 18%,transparent));border:1px solid color-mix(in srgb,var(--teal) 55%,transparent);border-radius:8px;padding:22px;text-align:center;width:100%;box-shadow:0 0 50px -20px var(--teal)}
+  .cta h3{font-family:var(--disp);font-weight:800;font-size:clamp(18px,2.2vw,28px);color:var(--oro);margin-bottom:14px}
+  .ctarow{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;text-decoration:none;padding:14px 24px;border-radius:3px;transition:transform .18s,box-shadow .18s;display:inline-block}
   .btn:hover{transform:translateY(-2px)}
   .btn1{background:var(--teal);color:#04110d;box-shadow:0 0 26px rgba(0,212,170,.35)}
-  .btn1:hover{box-shadow:0 0 42px rgba(0,212,170,.6)}
-  .btn2{border-color:color-mix(in srgb,var(--sky) 50%,transparent);color:var(--sky);background:rgba(8,9,13,.5)}
-  .sig{margin-top:14px;display:flex;justify-content:space-between;align-items:end;gap:20px;border-top:1px solid var(--hair);padding-top:12px}
-  .sig .info{font-family:var(--mono);font-size:10.5px;color:var(--dim);line-height:1.7}
-  .sig .info b{font-family:var(--disp);color:var(--ink);font-size:14px}
-  .sig .url{color:var(--teal)}
-  .sigp{width:66px;filter:drop-shadow(0 0 16px var(--viola))}
+  .btn2{border:1px solid color-mix(in srgb,var(--sky) 50%,transparent);color:var(--sky);background:rgba(8,9,13,.5)}
+  .term{background:rgba(8,9,13,.72);border:1px solid color-mix(in srgb,var(--c) 40%,transparent);border-radius:6px;padding:18px;font-family:var(--mono);font-size:clamp(11px,1.1vw,13px);line-height:1.85;color:var(--ink)}
+  .term .pr{color:var(--c)} .term .ar{color:var(--rosa)} .term .nu{color:var(--oro);font-weight:600} .term .ok{color:var(--teal);font-weight:600}
+  .secnum{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--c);text-transform:uppercase;display:block;text-align:center;margin-bottom:8px}
   /* navbar */
-  .navbar{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:100;display:flex;gap:9px;align-items:center;
-    background:rgba(8,9,13,.8);backdrop-filter:blur(12px);padding:9px 15px;border:1px solid var(--line);border-radius:7px}
+  .navbar{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:100;display:flex;gap:9px;align-items:center;background:rgba(8,9,13,.8);backdrop-filter:blur(12px);padding:9px 15px;border:1px solid var(--line);border-radius:7px}
   .dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--dim);background:transparent;cursor:pointer;transition:.25s}
   .dot.active{background:var(--c);border-color:var(--c);box-shadow:0 0 10px var(--c);transform:scale(1.3)}
-  .arr{background:none;border:1px solid var(--dim);color:var(--ink);width:26px;height:26px;border-radius:4px;cursor:pointer;font-size:12px;font-family:var(--mono);transition:.2s}
+  .arr{background:none;border:1px solid var(--dim);color:var(--ink);width:26px;height:26px;border-radius:4px;cursor:pointer;font-size:12px;font-family:var(--mono)}
   .arr:hover{border-color:var(--c);color:var(--c)}
   .clkz{position:fixed;top:0;bottom:0;width:18vw;z-index:20;cursor:pointer}.clkz.l{left:0}.clkz.r{right:0}
-  .hint{position:fixed;bottom:60px;left:50%;transform:translateX(-50%);z-index:30;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--dim)}
-  /* ============ MOBILE ============ */
   @media(max-width:900px){
-    .slide{padding:54px 16px 84px}
-    .cols,.cs{grid-template-columns:1fr;gap:16px}
-    .colR{order:-1}.ps{max-width:180px;width:50%}.ps.big{max-width:200px}
-    .stats{grid-template-columns:1fr 1fr}
-    .five{grid-template-columns:1fr 1fr}
-    .moves{grid-template-columns:1fr}
-    .htit{font-size:clamp(34px,11vw,60px)}
-    .timeline{flex-direction:column;align-items:flex-start;gap:14px;padding-left:6px}
-    .timeline::before{top:13px;bottom:13px;left:12px;right:auto;width:2px;height:auto;background:linear-gradient(180deg,var(--viola),var(--rosa),var(--teal),var(--oro),var(--sky))}
-    .ms{display:flex;gap:12px;text-align:left;width:100%}.ms .node{margin:0;flex:none}.ms .ds{max-width:none}
-    .sig{flex-direction:column;text-align:center}.sigp{margin:0 auto}
+    .slide{padding:64px 18px 84px}
+    .hero,.bridge,.case{grid-template-columns:1fr;gap:18px}
+    .tiles{grid-template-columns:1fr}.five{grid-template-columns:1fr 1fr}
+    .ps{max-width:160px;width:46%;order:-1}.meta{flex-direction:column;gap:12px}
+    .bmid{transform:rotate(90deg)}
+    .timeline{flex-direction:column;align-items:flex-start;gap:12px;padding-left:6px}
+    .timeline::before{top:12px;bottom:12px;left:11px;right:auto;width:2px;height:auto;background:linear-gradient(180deg,var(--viola),var(--rosa),var(--teal),var(--oro),var(--sky))}
+    .ms{display:flex;gap:12px;text-align:left;width:100%}.ms .node{margin:0;flex:none}
     #ico{opacity:.5}
   }
-  /* ============ STAMPA / PDF — ogni slide una pagina ============ */
   @media print{
     @page{size:1280px 720px;margin:0}
     html,body{height:auto;overflow:visible;background:#08090d!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-    #ico{display:none}.navbar,.clkz,.hint,body::after{display:none!important}
+    #ico,.navbar,.clkz,body::after{display:none!important}
     .deck{height:auto}
-    .slide{position:relative;inset:auto;opacity:1!important;visibility:visible!important;transform:none!important;
-      width:1280px;height:720px;page-break-after:always;break-after:page;overflow:hidden;display:flex}
-    .colR{order:0!important}.ps{max-width:340px;width:78%}
-    .cols{grid-template-columns:1.4fr 1fr!important;gap:36px!important}
-    .cs{grid-template-columns:1fr 1.15fr!important}
-    .stats{grid-template-columns:repeat(4,1fr)!important}
-    .five{grid-template-columns:repeat(5,1fr)!important}
-    .moves{grid-template-columns:repeat(3,1fr)!important}
-    .timeline{flex-direction:row!important;padding:0 14px!important}
-    .timeline::before{top:13px!important;left:24px!important;right:24px!important;bottom:auto!important;width:auto!important;height:2px!important;background:linear-gradient(90deg,var(--viola),var(--rosa),var(--teal),var(--oro),var(--sky))!important}
-    .ms{display:block!important;text-align:center!important}.ms .node{margin:0 auto 10px!important}.ms .ds{max-width:130px!important}
-    .sig{flex-direction:row!important;text-align:left!important}.sigp{margin:0!important}
+    .slide{position:relative;inset:auto;opacity:1!important;visibility:visible!important;transform:none!important;width:1280px;height:720px;page-break-after:always;break-after:page}
+    .hero{grid-template-columns:1.35fr 1fr!important}.bridge{grid-template-columns:1fr auto 1fr!important}.case{grid-template-columns:1fr 1fr!important}
+    .tiles{grid-template-columns:repeat(3,1fr)!important}.five{grid-template-columns:repeat(5,1fr)!important}
+    .ps{order:0!important;max-width:380px}.meta{flex-direction:row!important}
+    .timeline{flex-direction:row!important}.timeline::before{top:12px!important;left:24px!important;right:24px!important;bottom:auto!important;width:auto!important;height:2px!important;background:linear-gradient(90deg,var(--viola),var(--rosa),var(--teal),var(--oro),var(--sky))!important}
+    .ms{display:block!important;text-align:center!important}.ms .node{margin:0 auto 10px!important}
     .shimmer{-webkit-text-fill-color:#e9ecf2;color:#e9ecf2}
   }
 </style></head>
 <body>
 <div class="nebula n1"></div><div class="nebula n2"></div><div class="nebula n3"></div>
-<canvas id="ico"></canvas>
-<div class="vignette"></div>
+<canvas id="ico"></canvas><div class="vignette"></div>
 <div class="clkz l" data-nav="prev"></div><div class="clkz r" data-nav="next"></div>
 
 <div class="deck" id="deck">
 
-  <!-- 1 · HERO (viola) -->
-  <section class="slide active" style="--c:var(--viola)">
+  <!-- 1 · HERO -->
+  <section class="slide" style="--c:var(--viola)">
     <div class="topbar"><div class="tag">Verona · On · Chain · #01</div><div class="counter"><span class="sn">01</span> / 08</div></div>
-    <div class="cols">
-      <div class="colL">
+    <div class="hero">
+      <div>
         <span class="kick">▸ Incontro inaugurale</span>
         <h1 class="htit">Il Polpo e<br>l'economia<br><span class="shimmer">tokenizzata.</span></h1>
-        <p class="hsub">Verona OnChain porta i <b>beni reali</b> sulla blockchain. La domanda vera è: <b>chi</b> userà questa infrastruttura? Non solo persone — <b>agenti di IA</b>. E uno sciame lavora già, dentro l'azienda di <b>una persona sola</b>.</p>
         <div class="meta">
           <div class="mi"><b>Relatore</b>Mattia Calastri<br>Stratega IA &amp; Innovazione Digitale</div>
-          <div class="mi"><b>Evento</b>Mer 17 Giugno 2026 · ore 19:00<br>Doppio Malto · Viale del Lavoro · Verona</div>
+          <div class="mi"><b>Evento</b>Mer 17 Giugno 2026 · ore 19:00<br>Doppio Malto · Verona</div>
         </div>
       </div>
-      <div class="colR"><img src="polpo_sentinel.png" alt="Polpo" class="ps big"/></div>
+      <div style="text-align:center"><img src="polpo_sentinel.png" alt="Polpo" class="ps"/></div>
     </div>
   </section>
 
-  <!-- 2 · L'INNESCO (rosa) -->
+  <!-- 2 · L'INNESCO -->
   <section class="slide" style="--c:var(--rosa)">
     <div class="topbar"><div class="tag">§00 · L'Innesco</div><div class="counter"><span class="sn">02</span> / 08</div></div>
-    <div class="shead"><span class="snum">▸ Una notizia di pochi giorni fa</span>
-      <h2 class="stit">Non è artificiale.<br>È <span class="gw">intelligenza aliena.</span></h2></div>
+    <span class="kick">▸ Una notizia di pochi giorni fa</span>
+    <h2 class="stit">Non è artificiale.<br>È <span class="gw">intelligenza aliena.</span></h2>
     <div class="gbar"></div>
-    <div class="cols">
-      <div class="colL">
-        <p class="st">Pochi giorni fa il governo USA ha ordinato ad Anthropic di spegnere i suoi <span class="h">due modelli più potenti</span> — <b>Fable 5</b> e <b>Mythos 5</b> — vietandone l'accesso a ogni straniero: controlli sull'esportazione per <span class="h2">sicurezza nazionale</span>, dopo che qualcuno ne aveva "rotto le catene". Un programma non lo spegne un governo. <b>Questo è potere.</b></p>
-        <div class="blk"><h3>L'intelligenza in un granello di sabbia</h3><p>L'abbiamo trovata nel <b>silicio</b>. La chiamiamo "artificiale" solo perché l'abbiamo accesa noi. Ma ragiona, sceglie, esegue — ed è <b>qui, oggi, reale</b>.</p></div>
-        <div class="blk"><h3>E per la tua azienda?</h3><p>Non è fantascienza da Silicon Valley: è uno strumento che <b>oggi</b> lavora dentro un'impresa reale. La domanda non è "se" arriverà, ma <b>chi nel territorio imparerà a usarla per primo</b>.</p></div>
-      </div>
-      <div class="colR"><img src="polpo_forge.png" alt="Polpo" class="ps"/>
-        <div class="qp"><p>E questa intelligenza, oggi, non la subisci: la <b>forgi</b>. Anche qui. Anche tu. Anche a Verona.</p><div class="src">— Dall'alieno globale all'impresa locale</div></div>
-      </div>
+    <div class="tiles">
+      <div class="tile" style="--tc:var(--rosa)"><div class="n">48h</div><div class="l">poi spenta dal governo USA</div></div>
+      <div class="tile" style="--tc:var(--oro)"><div class="n">ARMA</div><div class="l">non più un software</div></div>
+      <div class="tile" style="--tc:var(--teal)"><div class="n">REALE</div><div class="l">qui · oggi · nel silicio</div></div>
     </div>
+    <div class="punch">Un governo non spegne un programma. <b>Spegne un'arma.</b></div>
   </section>
 
-  <!-- 3 · TESI (teal) -->
+  <!-- 3 · IL PONTE -->
   <section class="slide" style="--c:var(--teal)">
     <div class="topbar"><div class="tag">§01 · Il Ponte</div><div class="counter"><span class="sn">03</span> / 08</div></div>
-    <div class="shead"><span class="snum">▸ 01 / 06 — La tesi</span>
-      <h2 class="stit">L'IA è il <span class="gw">primo cliente</span><br>dell'economia tokenizzata.</h2></div>
-    <div class="gbar"></div>
-    <div class="cols">
-      <div class="colL">
-        <p class="st">Verona OnChain costruisce l'<span class="h">offerta</span>: beni reali — imprese, capitale, partecipazioni — <span class="h2">programmabili sulla blockchain</span>. Io porto la <b>domanda</b>: gli agenti di IA che useranno quei beni, li gestiranno, li faranno lavorare.</p>
-        <div class="blk"><h3>Due metà dello stesso ponte</h3><p>Senza <b>beni sulla blockchain</b> gli agenti di IA restano teoria. Senza <b>agenti di IA</b> i beni restano fermi. <b>Insieme</b> diventano un'economia che si muove da sola.</p></div>
-        <div class="blk"><h3>Dove mi colloco io</h3><p>Nel gruppo ognuno presidia un campo — fisco, finanza, Bitcoin, blockchain accademica. <b>Io mi occupo dell'IA.</b> Non vi parlo di tokenizzazione: vi mostro <code>chi la userà</code>.</p></div>
-      </div>
-      <div class="colR"><img src="polpo_pensieroso.png" alt="Polpo" class="ps"/>
-        <div class="qp"><p>"Voi costruite i binari sulla blockchain. Io vi mostro il treno: gli agenti di IA. E il mio è già in corsa."</p><div class="src">— Mattia Calastri · Stratega IA</div></div>
-      </div>
+    <h2 class="stit" style="text-align:center">L'IA è il <span class="gw">primo cliente</span><br>dell'economia tokenizzata.</h2>
+    <div class="gbar" style="margin:16px auto 26px"></div>
+    <div class="bridge">
+      <div class="bx" style="--bxc:var(--sky)"><div class="role">Offerta</div><div class="big">Beni reali<br>sulla blockchain</div><div class="who">il team</div></div>
+      <div class="bmid">+</div>
+      <div class="bx" style="--bxc:var(--viola)"><div class="role">Domanda</div><div class="big">Agenti<br>di IA</div><div class="who">io</div></div>
     </div>
+    <div class="punch">= un'economia che <b>si muove da sola.</b></div>
   </section>
 
-  <!-- 4 · MERCATO (oro) -->
+  <!-- 4 · MERCATO -->
   <section class="slide" style="--c:var(--oro)">
-    <div class="topbar"><div class="tag">§02 · Mercato · Numeri</div><div class="counter"><span class="sn">04</span> / 08</div></div>
-    <div class="shead"><span class="snum">▸ 02 / 06 — Il mercato che sta nascendo</span>
-      <h2 class="stit">L'IA che agisce <span class="gw">esplode.</span><br>L'economia reale la incontra.</h2></div>
-    <div class="gbar"></div>
-    <div class="stats">
-      <div class="stat" style="--sc:var(--teal)"><div class="big">+87%</div><div class="lab">Crescita annua · agenti di IA</div><div class="desc">Il software a crescita più rapida del decennio: agenti che decidono ed eseguono, non solo assistono.</div></div>
-      <div class="stat" style="--sc:var(--oro)"><div class="big">$16T</div><div class="lab">Beni tokenizzati · 2030</div><div class="desc">Stima dei beni reali sulla blockchain entro il 2030 (BCG): immobili, credito, quote societarie, capitale produttivo.</div></div>
-      <div class="stat" style="--sc:var(--sky)"><div class="big">MiCA</div><div class="lab">UE operativa</div><div class="desc">Per la prima volta tokenizzare i beni reali ha regole certe in Europa.</div></div>
-      <div class="stat" style="--sc:var(--rosa)"><div class="big">2026</div><div class="lab">Il punto d'incontro</div><div class="desc">IA matura + beni tokenizzati + regole: le due curve si incrociano ORA. Verona può esserci dall'inizio.</div></div>
+    <div class="topbar"><div class="tag">§02 · Il mercato</div><div class="counter"><span class="sn">04</span> / 08</div></div>
+    <h2 class="stit" style="text-align:center">Il mercato si crea <span class="gw">adesso.</span></h2>
+    <div class="gbar" style="margin:16px auto 26px"></div>
+    <div class="tiles">
+      <div class="tile" style="--tc:var(--teal)"><div class="n">+87%</div><div class="l">crescita annua<br>agenti di IA</div></div>
+      <div class="tile" style="--tc:var(--oro)"><div class="n">$16T</div><div class="l">beni tokenizzati<br>entro il 2030 · BCG</div></div>
+      <div class="tile" style="--tc:var(--sky)"><div class="n">2026</div><div class="l">regole UE pronte<br>(MiCA)</div></div>
     </div>
-    <p class="sub" style="margin-top:20px">Due curve che salivano separate — l'<b>IA che agisce</b> e i <b>beni che diventano digitali</b> — si incontrano adesso. Chi è sul ponte quando si toccano, guida il prossimo ciclo.</p>
+    <div class="punch">Le due curve si incrociano <b>ORA.</b></div>
   </section>
 
-  <!-- 5 · STACK (sky) -->
+  <!-- 5 · COME FUNZIONA -->
   <section class="slide" style="--c:var(--sky)">
     <div class="topbar"><div class="tag">§03 · Come funziona</div><div class="counter"><span class="sn">05</span> / 08</div></div>
-    <div class="shead"><span class="snum">▸ 03 / 06 — Senza tecnicismi</span>
-      <h2 class="stit">3 livelli. <span class="gw">1 agente</span><br>che opera da solo.</h2></div>
-    <div class="gbar"></div>
-    <p class="sub" style="margin-bottom:14px">Non devi capire la tecnologia. Devi capire <b>una cosa sola: chi comanda.</b></p>
-    <div class="layers">
-      <div class="layer" style="--lc:var(--sky)"><h4>1 · L'agente — il cervello</h4><p>Capisce, decide, sceglie. È il modello di IA che ragiona al posto tuo. Ma non si ferma alle parole: quando serve <b>agire su un bene reale</b>, chiede il permesso al livello sotto.</p></div>
-      <div class="layer" style="--lc:var(--teal)"><h4>2 · La regola — il contratto digitale</h4><p>Il bene è governato da regole che <b>scrivi tu</b>: cosa l'agente può fare, fin dove, con quanto. L'agente propone, la regola decide. <b>A comandare resti tu.</b></p></div>
-      <div class="layer" style="--lc:var(--viola)"><h4>3 · Il valore reale — il bene sulla blockchain</h4><p>Imprese, credito, immobili, capitale, registrati sulla blockchain. <b>L'agente ci opera in tempo reale</b>, ogni mossa lascia una traccia pubblica e immutabile. Il commercialista ha sempre la riga di bilancio.</p></div>
+    <h2 class="stit" style="text-align:center">Tu scrivi le regole.<br>L'agente <span class="gw">esegue.</span></h2>
+    <div class="gbar" style="margin:16px auto 22px"></div>
+    <div class="flow" style="margin:0 auto">
+      <div class="frow" style="--fc:var(--sky)"><div class="ic">1</div><div class="tx"><b>L'agente</b> · capisce e decide</div></div>
+      <div class="farr">↓</div>
+      <div class="frow" style="--fc:var(--teal)"><div class="ic">2</div><div class="tx"><b>La regola</b> · la scrivi tu</div></div>
+      <div class="farr">↓</div>
+      <div class="frow" style="--fc:var(--viola)"><div class="ic">3</div><div class="tx"><b>Il bene reale</b> · sulla blockchain</div></div>
     </div>
+    <div class="punch">A comandare <b>resti tu.</b></div>
   </section>
 
-  <!-- 6 · SCIAME (arancio) -->
+  <!-- 6 · LO SCIAME -->
   <section class="slide" style="--c:var(--arancio)">
     <div class="topbar"><div class="tag">§04 · Lo Sciame</div><div class="counter"><span class="sn">06</span> / 08</div></div>
-    <div class="shead"><span class="snum">▸ 04 / 06 — Cosa fa l'IA per l'impresa</span>
-      <h2 class="stit">Un imprenditore. <span class="gw">Uno sciame.</span><br>Cinque cose che fa mentre dormi.</h2></div>
-    <div class="gbar"></div>
+    <h2 class="stit" style="text-align:center">Cinque cose che fa <span class="gw">mentre dormi.</span></h2>
+    <div class="gbar" style="margin:16px auto 26px"></div>
     <div class="five">
-      <div class="mc" style="--mcc:var(--sky)"><div class="t">01</div><h4>Ascolta &amp; scrive</h4><p>Email, bozze, proposte, solleciti ai clienti — la comunicazione operativa gestita in autonomia, <b>nel tuo tono</b>.</p><span class="bd">Oggi</span></div>
-      <div class="mc" style="--mcc:var(--teal)"><div class="t">02</div><h4>Monitora &amp; sorveglia</h4><p>Cassa, scadenze, trattative: agenti-sentinella che vegliano 24 ore su 24 e ti avvisano <b>prima</b> che diventi un problema.</p><span class="bd">Oggi</span></div>
-      <div class="mc" style="--mcc:var(--oro)"><div class="t">03</div><h4>Riconcilia &amp; ordina</h4><p>Dati sparsi → ordine. Fatture, anagrafiche clienti, memoria aziendale sempre allineata. <b>Il lavoro noioso che nessuno vuole fare.</b></p><span class="bd">Oggi</span></div>
-      <div class="mc" style="--mcc:var(--rosa)"><div class="t">04</div><h4>Esegue &amp; opera</h4><p>Non solo pensa: <b>agisce</b>. E quando il bene è sulla blockchain, opera su valore reale entro le tue regole.</p><span class="bd">▶ Il salto</span></div>
-      <div class="mc" style="--mcc:var(--viola)"><div class="t">05</div><h4>Impara &amp; migliora</h4><p>Ogni errore diventa una regola. Lo sciame si corregge da solo. <b>Si compone, non si mantiene.</b></p><span class="bd">Domani</span></div>
+      <div class="mc" style="--mcc:var(--sky)"><div class="t">01</div><h4>Ascolta<br>&amp; scrive</h4><span class="bd">Oggi</span></div>
+      <div class="mc" style="--mcc:var(--teal)"><div class="t">02</div><h4>Sorveglia<br>24 ore</h4><span class="bd">Oggi</span></div>
+      <div class="mc" style="--mcc:var(--oro)"><div class="t">03</div><h4>Mette<br>ordine</h4><span class="bd">Oggi</span></div>
+      <div class="mc" style="--mcc:var(--rosa)"><div class="t">04</div><h4>Esegue<br>&amp; opera</h4><span class="bd">Il salto</span></div>
+      <div class="mc" style="--mcc:var(--viola)"><div class="t">05</div><h4>Impara<br>&amp; migliora</h4><span class="bd">Domani</span></div>
     </div>
   </section>
 
-  <!-- 7 · CASE (teal) -->
+  <!-- 7 · CASO REALE -->
   <section class="slide" style="--c:var(--teal)">
     <div class="topbar"><div class="tag">§05 · Caso reale</div><div class="counter"><span class="sn">07</span> / 08</div></div>
-    <div class="shead"><span class="snum">▸ 05 / 06 — Un esempio concreto</span>
-      <h2 class="stit">Un'agenzia. <span class="gw">Una persona.</span><br>La resa di una squadra di quindici.</h2></div>
-    <div class="gbar"></div>
-    <div class="cs">
-      <div class="csL">
-        <div class="csnum">1<small>persona · resa di 15</small></div>
-        <div class="blk"><h3>Il problema</h3><p>L'imprenditore è il collo di bottiglia: email, clienti, conti, sistemi — <b>tutto passa da lui</b>. Non scala. Non dorme.</p></div>
-        <div class="blk"><h3>La soluzione</h3><p>Un sistema nervoso di agenti di IA — il Polpo. Un cervello, decine di tentacoli in parallelo: comunicano, sorvegliano, riconciliano, eseguono. <b>Mentre l'imprenditore dorme.</b></p></div>
-        <div class="blk"><h3>Il risultato</h3><p>Astra Digital: <b>una persona</b> che produce come uno studio strutturato. Non guardate il codice qui accanto — guardate <b>cosa fa</b>: un comando, e l'intera azienda si muove.</p></div>
+    <div class="case">
+      <div style="text-align:center">
+        <div class="bignum">1 = 15<small>una persona · la resa di una squadra di quindici</small></div>
       </div>
-      <div class="colR" style="justify-content:center">
-        <div class="term"><div class="body">
-          <div><span class="pr">polpo@astra:~$</span> garden_walk()</div>
-          <div>&nbsp;&nbsp;<span class="ar">▸</span> cassa · trattative · email <span class="ok">scansionate</span></div>
-          <div>&nbsp;&nbsp;<span class="ar">▸</span> <span class="nu">3</span> contatti caldi · <span class="nu">2</span> scadenze · <span class="nu">1</span> urgenza</div>
+      <div class="clabels">
+        <div class="clab"><b>Problema</b> il collo di bottiglia: tutto passa da te</div>
+        <div class="clab"><b>Soluzione</b> lo sciame — il Polpo</div>
+        <div class="clab"><b>Risultato</b> reale, non a slide</div>
+        <div class="term" style="margin-top:8px">
           <div><span class="pr">polpo@astra:~$</span> dispatch_swarm()</div>
           <div>&nbsp;&nbsp;<span class="ar">▸</span> agente-email <span class="ok">bozze pronte</span></div>
-          <div>&nbsp;&nbsp;<span class="ar">▸</span> agente-sentinel <span class="ok">cassa ok</span></div>
-          <div>&nbsp;&nbsp;<span class="ar">▸</span> agente-crm <span class="ok">trattative allineate</span></div>
-          <div><span class="ok">[ 1 imprenditore · 12 agenti · come una squadra ]</span></div>
-        </div></div>
-        <img src="polpo_reading.png" alt="Polpo" class="ps" style="max-width:150px;margin-top:6px"/>
+          <div>&nbsp;&nbsp;<span class="ar">▸</span> agente-cassa <span class="ok">conti ok</span></div>
+          <div><span class="ok">[ 1 imprenditore · 12 agenti ]</span></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 8 · ROADMAP + 3 COSE (viola) -->
+  <!-- 8 · L'INIZIO -->
   <section class="slide" style="--c:var(--viola)">
-    <div class="topbar"><div class="tag">§06 · Tappe e invito</div><div class="counter"><span class="sn">08</span> / 08</div></div>
-    <div class="shead"><span class="snum">▸ 06 / 06 — VeronaOnChain</span>
-      <h2 class="stit">Questo è <span class="gw">l'inizio.</span><br>Verona costruisce la sua economia digitale.</h2></div>
-    <div class="gbar"></div>
-    <div class="rmap">
-      <div class="timeline">
-        <div class="ms" style="--mc:var(--viola)"><div class="node"></div><div class="date">16 Mag 2026</div><div class="nm">Aperitivo fondatori</div><div class="ds">Avvio al Doppio Malto</div></div>
-        <div class="ms" style="--mc:var(--rosa)"><div class="node"></div><div class="date">Mag–Giu 2026</div><div class="nm">Ecosistema + Sito</div><div class="ds">veronaonchain.it · manifesto · imprese</div></div>
-        <div class="ms" style="--mc:var(--teal)"><div class="node"></div><div class="date">17 Giu 2026</div><div class="nm">Verona OnChain #01</div><div class="ds">Primo incontro pubblico</div></div>
-        <div class="ms" style="--mc:var(--oro)"><div class="node"></div><div class="date">Q4 2026</div><div class="nm">Conferenza</div><div class="ds">Imprese, professionisti, capitale</div></div>
-        <div class="ms" style="--mc:var(--sky)"><div class="node"></div><div class="date">2027</div><div class="nm">Polo dell'ecosistema</div><div class="ds">Progetti pilota su beni reali + IA</div></div>
-      </div>
-      <div style="text-align:center"><span class="snum" style="color:var(--oro)">▸ Le 3 cose da fare lunedì mattina</span></div>
-      <div class="moves">
-        <div class="blk" style="--c:var(--sky)"><h3>Mossa 1 · Mappa</h3><p>Scrivi i <b>3 compiti ripetitivi</b> che ti rubano più tempo: i primi da delegare a un agente.</p></div>
-        <div class="blk" style="--c:var(--teal)"><h3>Mossa 2 · Memoria</h3><p>Costruisci la tua <b>memoria digitale</b>: un posto solo dove vive ciò che la tua azienda sa. Un'IA senza memoria è un genio smemorato.</p></div>
-        <div class="blk" style="--c:var(--oro)"><h3>Mossa 3 · Delega</h3><p>Dai a un agente <b>un compito vero</b>, con regole e limiti. Prima l'identità, poi la tecnologia.</p></div>
-      </div>
-      <div class="cta">
-        <h3>17 Giugno 2026 · ore 19 · Doppio Malto Verona</h3>
-        <p>Verona OnChain #01 — incontro su invito, posti limitati. Imprenditori, professionisti e innovatori del territorio.</p>
-        <div class="ctarow"><a href="https://veronaonchain.it" class="btn btn1">▸ Entra · veronaonchain.it</a><a href="mailto:info@veronaonchain.it" class="btn btn2">▸ Scrivici</a></div>
-      </div>
-      <div class="sig">
-        <div class="info"><b>Mattia Calastri</b> — Stratega IA &amp; Innovazione Digitale<br>Verona OnChain · Astra Digital · <span class="url">veronaonchain.it</span></div>
-        <img src="polpo_dancing.png" alt="Polpo" class="sigp"/>
-      </div>
+    <div class="topbar"><div class="tag">§06 · Da domani</div><div class="counter"><span class="sn">08</span> / 08</div></div>
+    <h2 class="stit" style="text-align:center">Le 3 cose da fare <span class="gw">lunedì.</span></h2>
+    <div class="gbar" style="margin:16px auto 22px"></div>
+    <div class="tiles">
+      <div class="tile" style="--tc:var(--sky)"><div class="n">1</div><div class="l"><b style="color:#fff">Mappa</b><br>i 3 compiti che ti rubano tempo</div></div>
+      <div class="tile" style="--tc:var(--teal)"><div class="n">2</div><div class="l"><b style="color:#fff">Memoria</b><br>una sola memoria digitale</div></div>
+      <div class="tile" style="--tc:var(--oro)"><div class="n">3</div><div class="l"><b style="color:#fff">Delega</b><br>un compito vero, con regole</div></div>
+    </div>
+    <div class="timeline" style="margin-top:26px">
+      <div class="ms" style="--mc:var(--teal)"><div class="node"></div><div class="date">17 Giu</div><div class="nm">Stasera</div></div>
+      <div class="ms" style="--mc:var(--oro)"><div class="node"></div><div class="date">Q4 2026</div><div class="nm">Conferenza</div></div>
+      <div class="ms" style="--mc:var(--sky)"><div class="node"></div><div class="date">2027</div><div class="nm">Polo del territorio</div></div>
+    </div>
+    <div class="cta">
+      <h3>Verona OnChain #01 · posti limitati</h3>
+      <div class="ctarow"><a href="https://veronaonchain.it" class="btn btn1">▸ veronaonchain.it</a><a href="mailto:info@veronaonchain.it" class="btn btn2">▸ Scrivici</a></div>
     </div>
   </section>
 
@@ -357,90 +276,55 @@
   <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
   <button class="arr" data-nav="next">▶</button>
 </div>
-<div class="hint" id="hint">← →  ·  spazio  ·  F schermo intero</div>
 
 <script>
 (()=>{
-  // ===== ICOSAEDRO 3D di sfondo (design system Astra AI OS) =====
   const cv=document.getElementById('ico'),ctx=cv.getContext('2d'),DPR=Math.min(devicePixelRatio||1,2);
   const ACCENTS=['#9b5de5','#ff2e63','#00d4aa','#ffd400','#5ec5ff','#ff8c00','#00d4aa','#9b5de5'];
   let ACC='#9b5de5',accCur=[155,93,229];
-  function hex2rgb(h){return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];}
-  function rgba(c,a){return 'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')';}
-  const PHI=(1+Math.sqrt(5))/2,_il=Math.hypot(1,PHI);
+  const hex2rgb=h=>[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];
+  const rgba=(c,a)=>'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')';
+  const PHI=(1+Math.sqrt(5))/2,_il=Math.hypot(1,PHI),TAU=Math.PI*2;
   const ICO_V=[[-1,PHI,0],[1,PHI,0],[-1,-PHI,0],[1,-PHI,0],[0,-1,PHI],[0,1,PHI],[0,-1,-PHI],[0,1,-PHI],[PHI,0,-1],[PHI,0,1],[-PHI,0,-1],[-PHI,0,1]].map(v=>[v[0]/_il,v[1]/_il,v[2]/_il]);
   const ICO_E=(()=>{const e=[],d2=(a,b)=>{const x=a[0]-b[0],y=a[1]-b[1],z=a[2]-b[2];return x*x+y*y+z*z;};let md=9;
     for(let i=0;i<12;i++)for(let j=i+1;j<12;j++){const d=d2(ICO_V[i],ICO_V[j]);if(d<md)md=d;}
     for(let i=0;i<12;i++)for(let j=i+1;j<12;j++)if(d2(ICO_V[i],ICO_V[j])<md*1.1)e.push([i,j]);return e;})();
   const ICO_F=(()=>{const ad=ICO_V.map(()=>new Set());for(const[a,b]of ICO_E){ad[a].add(b);ad[b].add(a);}
     const f=[];for(let a=0;a<12;a++)for(const b of ad[a])if(b>a)for(const c of ad[b])if(c>b&&ad[a].has(c))f.push([a,b,c]);return f;})();
-  let ax=0,ay=0,az=0,mX=0,mY=0,mXe=0,mYe=0,W=0,H=0;
+  let ax=0,ay=0,az=0,mX=0,mY=0,mXe=0,mYe=0,W=0,H=0,t=0;
   function size(){W=innerWidth;H=innerHeight;cv.width=W*DPR;cv.height=H*DPR;cv.style.width=W+'px';cv.style.height=H+'px';}
   addEventListener('resize',size);size();
   addEventListener('mousemove',e=>{mX=(e.clientX/innerWidth-0.5)*2;mY=(e.clientY/innerHeight-0.5)*2;});
-  // stelle
-  const TAU=Math.PI*2, stars=[];
-  for(let i=0;i<200;i++){const u=Math.random()*TAU,v=Math.acos(2*Math.random()-1),r=1;stars.push([Math.sin(v)*Math.cos(u),Math.cos(v),Math.sin(v)*Math.sin(u),Math.random()*TAU,0.4+Math.random()*1.4]);}
-  let t=0;
+  const stars=[];for(let i=0;i<200;i++){const u=Math.random()*TAU,v=Math.acos(2*Math.random()-1);stars.push([Math.sin(v)*Math.cos(u),Math.cos(v),Math.sin(v)*Math.sin(u),Math.random()*TAU,0.4+Math.random()*1.4]);}
   function frame(){
     ctx.setTransform(DPR,0,0,DPR,0,0);ctx.clearRect(0,0,W,H);
     const cx=W*0.5,cy=H*0.46,R=Math.min(W,H)*0.30;
-    // ease accent
     const tgt=hex2rgb(ACC);for(let k=0;k<3;k++)accCur[k]+=(tgt[k]-accCur[k])*0.05;
-    t+=0.005;
-    ax+=0.0030;ay+=0.0040;az+=0.0022;mXe+=(mX-mXe)*0.05;mYe+=(mY-mYe)*0.05;
+    t+=0.005;ax+=0.0030;ay+=0.0040;az+=0.0022;mXe+=(mX-mXe)*0.05;mYe+=(mY-mYe)*0.05;
     const AX=ax+mYe*0.4,AY=ay+mXe*0.5,AZ=az;
     const sax=Math.sin(AX),cax=Math.cos(AX),say=Math.sin(AY),cay=Math.cos(AY),saz=Math.sin(AZ),caz=Math.cos(AZ);
-    function rot(v){let x=v[0],y=v[1],z=v[2];
-      let y1=y*cax-z*sax,z1=y*sax+z*cax;y=y1;z=z1;
-      let x1=x*cay+z*say,z2=-x*say+z*cay;x=x1;z=z2;
-      let x2=x*caz-y*saz,y2=x*saz+y*caz;return[x2,y2,z];}
+    const rot=v=>{let x=v[0],y=v[1],z=v[2];let y1=y*cax-z*sax,z1=y*sax+z*cax;y=y1;z=z1;let x1=x*cay+z*say,z2=-x*say+z*cay;x=x1;z=z2;return[x*caz-y*saz,x*saz+y*caz,z2];};
     ctx.globalCompositeOperation='lighter';
-    // stelle
-    for(const s of stars){const p=rot(s);const dep=(p[2]+1)/2;const sx=cx+p[0]*R*2.1,sy=cy+p[1]*R*2.1;
-      ctx.globalAlpha=(0.06+0.18*dep)*(0.6+0.4*Math.sin(t*6+s[3]));ctx.fillStyle=rgba([233,236,242],1);
-      ctx.beginPath();ctx.arc(sx,sy,s[4]*dep,0,TAU);ctx.fill();}
+    for(const s of stars){const p=rot(s);const dep=(p[2]+1)/2;ctx.globalAlpha=(0.06+0.18*dep)*(0.6+0.4*Math.sin(t*6+s[3]));ctx.fillStyle=rgba([233,236,242],1);ctx.beginPath();ctx.arc(cx+p[0]*R*2.1,cy+p[1]*R*2.1,s[4]*dep,0,TAU);ctx.fill();}
     const pv=ICO_V.map(v=>{const p=rot(v);return{x:cx+p[0]*R,y:cy+p[1]*R,z:p[2]};});
-    // facce vetro
     const fz=ICO_F.map(f=>{const cz=(pv[f[0]].z+pv[f[1]].z+pv[f[2]].z)/3;return[f,cz];}).sort((a,b)=>a[1]-b[1]);
-    for(const[f,cz]of fz){const dep=cz*0.5+0.5;ctx.globalAlpha=0.04+0.05*dep;ctx.fillStyle=rgba(accCur,1);
-      ctx.beginPath();ctx.moveTo(pv[f[0]].x,pv[f[0]].y);ctx.lineTo(pv[f[1]].x,pv[f[1]].y);ctx.lineTo(pv[f[2]].x,pv[f[2]].y);ctx.closePath();ctx.fill();}
-    // spigoli glow
+    for(const[f,cz]of fz){const dep=cz*0.5+0.5;ctx.globalAlpha=0.04+0.05*dep;ctx.fillStyle=rgba(accCur,1);ctx.beginPath();ctx.moveTo(pv[f[0]].x,pv[f[0]].y);ctx.lineTo(pv[f[1]].x,pv[f[1]].y);ctx.lineTo(pv[f[2]].x,pv[f[2]].y);ctx.closePath();ctx.fill();}
     ctx.shadowColor=rgba(accCur,1);
-    for(const[a,b]of ICO_E){const A=pv[a],B=pv[b],dep=(A.z+B.z)*0.25+0.5;
-      ctx.strokeStyle=rgba(accCur,0.12+0.5*dep);ctx.globalAlpha=1;ctx.lineWidth=1.1;ctx.shadowBlur=8;
-      ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}
+    for(const[a,b]of ICO_E){const A=pv[a],B=pv[b],dep=(A.z+B.z)*0.25+0.5;ctx.strokeStyle=rgba(accCur,0.12+0.5*dep);ctx.globalAlpha=1;ctx.lineWidth=1.1;ctx.shadowBlur=8;ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke();}
     ctx.shadowBlur=0;
-    // vertici
-    for(const p of pv){const dep=p.z*0.5+0.5;ctx.globalAlpha=0.3+0.6*dep;ctx.fillStyle='#fff';
-      ctx.beginPath();ctx.arc(p.x,p.y,0.8+1.8*dep,0,TAU);ctx.fill();}
-    // nucleo
-    ctx.globalAlpha=0.6;ctx.fillStyle=rgba(accCur,1);ctx.shadowColor=rgba(accCur,1);ctx.shadowBlur=26;
-    ctx.beginPath();ctx.arc(cx,cy,3,0,TAU);ctx.fill();ctx.shadowBlur=0;
+    for(const p of pv){const dep=p.z*0.5+0.5;ctx.globalAlpha=0.3+0.6*dep;ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(p.x,p.y,0.8+1.8*dep,0,TAU);ctx.fill();}
+    ctx.globalAlpha=0.6;ctx.fillStyle=rgba(accCur,1);ctx.shadowColor=rgba(accCur,1);ctx.shadowBlur=26;ctx.beginPath();ctx.arc(cx,cy,3,0,TAU);ctx.fill();ctx.shadowBlur=0;
     ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;
     requestAnimationFrame(frame);
   }
   frame();
-
-  // ===== navigazione slide =====
   const sl=[...document.querySelectorAll('.slide')],dt=[...document.querySelectorAll('.dot')],tt=sl.length;let cu=0;
-  function go(i){if(i<0)i=tt-1;if(i>=tt)i=0;
-    sl.forEach((s,j)=>s.classList.toggle('active',j===i));
-    dt.forEach((d,j)=>d.classList.toggle('active',j===i));
-    cu=i;ACC=ACCENTS[i%ACCENTS.length];
-    document.querySelector('.navbar').style.setProperty('--c',ACC);
-  }
+  function go(i){if(i<0)i=tt-1;if(i>=tt)i=0;sl.forEach((s,j)=>s.classList.toggle('active',j===i));dt.forEach((d,j)=>d.classList.toggle('active',j===i));cu=i;ACC=ACCENTS[i%ACCENTS.length];document.querySelector('.navbar').style.setProperty('--c',ACC);}
   function nx(){go(cu+1)} function pv2(){go(cu-1)}
-  addEventListener('keydown',e=>{
-    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();nx();}
-    if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();pv2();}
-    if(e.key==='f'||e.key==='F'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();}
-    const h=document.getElementById('hint');if(h)h.style.opacity=0;
-  });
+  addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();nx();}if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();pv2();}if(e.key==='f'||e.key==='F'){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();}});
   document.querySelectorAll('[data-nav]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();el.dataset.nav==='next'?nx():pv2();}));
   dt.forEach((d,i)=>d.addEventListener('click',e=>{e.stopPropagation();go(i);}));
-  let ts=0;addEventListener('touchstart',e=>ts=e.changedTouches[0].screenX);
-  addEventListener('touchend',e=>{const te=e.changedTouches[0].screenX;if(ts-te>50)nx();if(te-ts>50)pv2();});
+  let ts=0;addEventListener('touchstart',e=>ts=e.changedTouches[0].screenX);addEventListener('touchend',e=>{const te=e.changedTouches[0].screenX;if(ts-te>50)nx();if(te-ts>50)pv2();});
   go(0);
 })();
 </script>
