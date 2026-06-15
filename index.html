@@ -109,6 +109,7 @@
   .arr{background:none;border:1px solid var(--dim);color:var(--ink);width:26px;height:26px;border-radius:4px;cursor:pointer;font-size:12px;font-family:var(--mono)}
   .arr:hover{border-color:var(--c);color:var(--c)}
   .clkz{position:fixed;top:0;bottom:0;width:18vw;z-index:20;cursor:pointer}.clkz.l{left:0}.clkz.r{right:0}
+  .char{position:absolute;bottom:clamp(14px,2.5vw,34px);right:clamp(18px,3.5vw,56px);width:clamp(120px,15vw,220px);height:auto;z-index:7;pointer-events:none;filter:drop-shadow(0 10px 34px rgba(255,46,99,.42))}
   @media(max-width:900px){
     .slide{padding:64px 18px 84px}
     .hero,.bridge,.case{grid-template-columns:1fr;gap:18px}
@@ -118,7 +119,7 @@
     .timeline{flex-direction:column;align-items:flex-start;gap:12px;padding-left:6px}
     .timeline::before{top:12px;bottom:12px;left:11px;right:auto;width:2px;height:auto;background:linear-gradient(180deg,var(--viola),var(--rosa),var(--teal),var(--oro),var(--sky))}
     .ms{display:flex;gap:12px;text-align:left;width:100%}.ms .node{margin:0;flex:none}
-    #ico{opacity:.5}
+    #ico{opacity:.5}.char{width:86px;opacity:.85;bottom:62px}
   }
   @media print{
     @page{size:1280px 720px;margin:0}
@@ -153,13 +154,14 @@
           <div class="mi"><b>Evento</b>Mer 17 Giugno 2026 · ore 19:00<br>Doppio Malto · Verona</div>
         </div>
       </div>
-      <div style="text-align:center"><img src="polpo_sentinel.png" alt="Polpo" class="ps"/></div>
+      <div style="text-align:center"><img src="img/hero.png" alt="Polpo" class="ps"/></div>
     </div>
   </section>
 
   <!-- 2 · L'INNESCO -->
   <section class="slide" style="--c:var(--rosa)">
     <div class="topbar"><div class="tag">§00 · L'Innesco</div><div class="counter"><span class="sn">02</span> / 08</div></div>
+    <img src="img/think.png" class="char" alt=""/>
     <span class="kick">▸ Una notizia di pochi giorni fa</span>
     <h2 class="stit">Non è artificiale.<br>È <span class="gw">intelligenza aliena.</span></h2>
     <div class="gbar"></div>
@@ -174,6 +176,7 @@
   <!-- 3 · IL PONTE -->
   <section class="slide" style="--c:var(--teal)">
     <div class="topbar"><div class="tag">§01 · Il Ponte</div><div class="counter"><span class="sn">03</span> / 08</div></div>
+    <img src="img/proud.png" class="char" alt=""/>
     <h2 class="stit" style="text-align:center">L'IA è il <span class="gw">primo cliente</span><br>dell'economia tokenizzata.</h2>
     <div class="gbar" style="margin:16px auto 26px"></div>
     <div class="bridge">
@@ -187,6 +190,7 @@
   <!-- 4 · MERCATO -->
   <section class="slide" style="--c:var(--oro)">
     <div class="topbar"><div class="tag">§02 · Il mercato</div><div class="counter"><span class="sn">04</span> / 08</div></div>
+    <img src="img/excited.png" class="char" alt=""/>
     <h2 class="stit" style="text-align:center">Il mercato si crea <span class="gw">adesso.</span></h2>
     <div class="gbar" style="margin:16px auto 26px"></div>
     <div class="tiles">
@@ -200,6 +204,7 @@
   <!-- 5 · COME FUNZIONA -->
   <section class="slide" style="--c:var(--sky)">
     <div class="topbar"><div class="tag">§03 · Come funziona</div><div class="counter"><span class="sn">05</span> / 08</div></div>
+    <img src="img/code.png" class="char" alt=""/>
     <h2 class="stit" style="text-align:center">Tu scrivi le regole.<br>L'agente <span class="gw">esegue.</span></h2>
     <div class="gbar" style="margin:16px auto 22px"></div>
     <div class="flow" style="margin:0 auto">
@@ -215,6 +220,7 @@
   <!-- 6 · LO SCIAME -->
   <section class="slide" style="--c:var(--arancio)">
     <div class="topbar"><div class="tag">§04 · Lo Sciame</div><div class="counter"><span class="sn">06</span> / 08</div></div>
+    <img src="img/swarm.png" class="char" alt=""/>
     <h2 class="stit" style="text-align:center">Cinque cose che fa <span class="gw">mentre dormi.</span></h2>
     <div class="gbar" style="margin:16px auto 26px"></div>
     <div class="five">
@@ -232,17 +238,13 @@
     <div class="case">
       <div style="text-align:center">
         <div class="bignum">1 = 15<small>una persona · la resa di una squadra di quindici</small></div>
+        <img src="img/victory.png" alt="Polpo" style="width:46%;max-width:200px;margin-top:6px;filter:drop-shadow(0 10px 30px rgba(255,46,99,.42))"/>
       </div>
       <div class="clabels">
+        <img src="img/brain.png" alt="Il second brain" style="width:100%;max-width:300px;border-radius:10px;border:1px solid var(--hair);display:block;margin:0 0 6px"/>
         <div class="clab"><b>Problema</b> il collo di bottiglia: tutto passa da te</div>
-        <div class="clab"><b>Soluzione</b> lo sciame — il Polpo</div>
+        <div class="clab"><b>Soluzione</b> lo sciame — il Polpo (1 cervello, tanti tentacoli)</div>
         <div class="clab"><b>Risultato</b> reale, non a slide</div>
-        <div class="term" style="margin-top:8px">
-          <div><span class="pr">polpo@astra:~$</span> dispatch_swarm()</div>
-          <div>&nbsp;&nbsp;<span class="ar">▸</span> agente-email <span class="ok">bozze pronte</span></div>
-          <div>&nbsp;&nbsp;<span class="ar">▸</span> agente-cassa <span class="ok">conti ok</span></div>
-          <div><span class="ok">[ 1 imprenditore · 12 agenti ]</span></div>
-        </div>
       </div>
     </div>
   </section>
@@ -319,7 +321,7 @@
       const place=a=>{let x=Math.cos(a)*R*ring.rr,y=0,z=Math.sin(a)*R*ring.rr;
         let y1=y*Math.cos(ring.tx)-z*Math.sin(ring.tx),z1=y*Math.sin(ring.tx)+z*Math.cos(ring.tx);y=y1;z=z1;
         let x1=x*Math.cos(ring.tz)-y*Math.sin(ring.tz),y2=x*Math.sin(ring.tz)+y*Math.cos(ring.tz);x=x1;y=y2;
-        const p=rot([x,y,z]);return{sx:cx+p[0],sy:cy+p[1],dep:(p[2]+1)/2};};
+        const p=rot([x,y,z]);return{sx:cx+p[0],sy:cy+p[1],dep:Math.max(0,Math.min(1,(p[2]/(R*ring.rr)+1)/2))};};
       let prev=null;
       for(let i=0;i<=ring.n;i++){const q=place(i/ring.n*TAU+t*ring.sp);
         if(prev){ctx.strokeStyle=rgba(accCur,0.05+0.26*q.dep);ctx.lineWidth=1.1;ctx.beginPath();ctx.moveTo(prev.sx,prev.sy);ctx.lineTo(q.sx,q.sy);ctx.stroke();}prev=q;}
